@@ -1,14 +1,20 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "GitHub Stats",
   "version": "1.0",
-  "description": "Display your GitHub stats",
-  "permissions": ["https://api.github.com/"],
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
+  "description": "A simple Chrome extension to display GitHub user stats.",
   "icons": {
-    "48": "icon.png"
-  }
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+    },
+    "default_width": 400,
+    "default_height": 600
+  },
+  "permissions": ["https://api.github.com/"]
 }

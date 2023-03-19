@@ -1,34 +1,42 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>GitHub Stats</title>
     <style>
         body {
-            width: 320px;
-            padding: 16px;
+            min-width: 300px;
         }
     </style>
 </head>
 
-<body class="bg-gray-100">
-    <div>
-        <h1 class="text-xl font-semibold mb-4">GitHub Stats</h1>
-        <div class="flex mb-4">
-            <input
-                class="flex-grow px-3 py-2 rounded-l-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none"
-                type="text" id="username-input" placeholder="GitHub Username">
-            <button class="px-3 py-2 text-white bg-indigo-500 rounded-r-lg hover:bg-indigo-600"
-                id="submit-button">Submit</button>
-        </div>
-        <div id="stats-container" style="display: none;">
-            <p class="mb-1"><strong>Username:</strong> <span id="username"></span></p>
-            <p class="mb-1"><strong>Public Repos:</strong> <span id="public_repos"></span></p>
-            <p class="mb-1"><strong>Followers:</strong> <span id="followers"></span></p>
-            <p class="mb-1"><strong>Following:</strong> <span id="following"></span></p>
-            <p class="mb-1"><strong>Last Updated:</strong> <span id="last_updated"></span></p>
+<body class="p-4">
+    <h1 class="text-xl font-semibold mb-4">GitHub Stats</h1>
+
+    <form id="github-form" class="mb-4">
+        <label for="username-input" class="sr-only">GitHub Username</label>
+        <input id="username-input" type="text" class="border border-gray-300 p-2 w-full mb-2"
+            placeholder="Enter your GitHub username">
+        <button type="submit" class="bg-blue-500 text-white p-2 w-full">Submit</button>
+    </form>
+
+    <div id="stats-container" class="bg-white border border-gray-300 p-4 rounded-md" style="display: none;">
+        <h2 class="text-lg font-semibold mb-2" id="username"></h2>
+        <img id="avatar" class="w-16 h-16 mb-4 rounded-full" src="" alt="User avatar" />
+        <div>Public Repos: <span id="public_repos"></span></div>
+        <div>Followers: <span id="followers"></span></div>
+        <div>Following: <span id="following"></span></div>
+        <div>Last Updated: <span id="last_updated"></span></div>
+
+        <div id="repositories-container">
+            <h2 class="text-lg font-semibold mt-4 mb-2">Repositories</h2>
+            <ul id="repositories-list" class="list-disc list-inside"></ul>
         </div>
     </div>
+
     <script src="popup.js"></script>
 </body>
 

@@ -1,46 +1,39 @@
-# GitHub Stats Chrome Extension
+# GitHub Stats
 
-A simple Chrome extension to display a user's GitHub stats. Users can input their GitHub username, and the extension will fetch and display their public repositories, followers, following, and last updated information.
+A simple Chrome extension to display user stats and repositories from GitHub.
 
 ## Features
 
-- Input GitHub username
-- Fetch and display the following stats:
-  - Public repositories
+- Fetch and display the following GitHub user stats:
+  - Username
+  - Avatar
+  - Public Repositories
   - Followers
   - Following
-  - Last updated
+  - Last Updated
+- Fetch and display a list of user repositories (paginated)
 
 ## Installation
 
-To install the GitHub Stats Chrome extension, follow these steps:
-
-1. Clone this repository to your local machine:
-
-```bash
-git clone https://github.com/mowamed/github-stats-extension.git
-cd github-stats-extension
-```
-
-2. Open Chrome and navigate to chrome://extensions.
-
-3. Enable "Developer mode" by toggling the switch in the top right corner.
-
-4. Click "Load unpacked" and select the github-stats-extension folder.
-
-The extension should now be loaded in your Chrome browser, and you should see the GitHub Stats icon in your extensions bar.
+1. Clone or download this repository.
+2. Open the Chrome browser and navigate to `chrome://extensions`.
+3. Enable "Developer mode" in the top right corner.
+4. Click the "Load unpacked" button and select the directory containing the downloaded repository.
 
 ## Usage
 
-To use the GitHub Stats Chrome extension, follow these steps:
-
-1. Click the GitHub Stats icon in your extensions bar.
-
+1. Click the GitHub Stats extension icon in the Chrome toolbar.
 2. Enter your GitHub username in the input field.
-
 3. Click the "Submit" button.
+4. The extension will fetch and display your GitHub stats and repositories.
 
-The extension will fetch and display your GitHub stats, including public repositories, followers, following, and last updated information.
+## Technologies
 
-License
-This project is licensed under the MIT License.
+- HTML
+- CSS (Tailwind CSS)
+- JavaScript
+- Chrome Extension API
+
+## License
+
+MIT
