@@ -37,6 +37,64 @@ function fetchRepositories(username, page, perPage, callback) {
     });
 }
 
+function fetchRecentActivity(username, callback) {
+  Promise.all([
+    fetch(`https://api.github.com/users/${username}/events/public`),
+    fetch(`https://api.github.com/search/issues?q=author:${username}+is:issue`),
+    fetch(`https://api.github.com/search/issues?q=author:${username}+is:pr`),
+  ])
+    .then(async ([eventsResponse, issuesResponse, prsResponse]) => {
+      if (!eventsResponse.ok || !issuesResponse.ok || !prsResponse.ok) {
+        throw new Error("Failed to fetch recent activity");
+      }
+
+      const events = await eventsResponse.json();
+      const issues = await issuesResponse.json();
+      const prs = await prsResponse.json();
+
+      callback(null, { events, issues: issues.items, prs: prs.items });
+    })
+    .catch((error) => {
+      callback(error, null);
+    });
+}
+
+function displayRecentActivity(activity) {
+  const activityList = document.getElementById("activity-list");
+  activityList.innerHTML = "";
+
+  // Display recent commits
+  const commits = activity.events
+    .filter((event) => event.type === "PushEvent")
+    .slice(0, 5);
+  commits.forEach((commit) => {
+    const listItem = document.createElement("li");
+    listItem.className = "p-2 bg-white border border-gray-300 rounded-md";
+    listItem.innerText = `Commit: ${commit.repo.name}`;
+    activityList.appendChild(listItem);
+  });
+
+  // Display recent issues
+  const issues = activity.issues.slice(0, 5);
+  issues.forEach((issue) => {
+    const listItem = document.createElement("li");
+    listItem.className = "p-2 bg-white border border-gray-300 rounded-md";
+    listItem.innerText = `Issue: ${issue.title}`;
+    activityList.appendChild(listItem);
+  });
+
+  // Display recent pull requests
+  const prs = activity.prs.slice(0, 5);
+  prs.forEach((pr) => {
+    const listItem = document.createElement("li");
+    listItem.className = "p-2 bg-white border border-gray-300 rounded-md";
+    listItem.innerText = `Pull Request: ${pr.title}`;
+    activityList.appendChild(listItem);
+  });
+
+  document.getElementById("activity-container").style.display = "block";
+}
+
 function displayStats(data) {
   document.getElementById("username").innerText = data.login;
   document.getElementById("public_repos").innerText = data.public_repos;
@@ -56,6 +114,7 @@ function displayRepositories(repositories) {
 
   repositories.forEach((repo) => {
     const listItem = document.createElement("li");
+    listItem.className = "p-2 bg-white border border-gray-300 rounded-md";
     listItem.innerText = repo.name;
     repositoriesList.appendChild(listItem);
   });
@@ -80,6 +139,15 @@ function submitForm() {
       console.error(error);
     } else {
       displayRepositories(repositories);
+    }
+  });
+
+  // Fetch and display recent activity
+  fetchRecentActivity(username, (error, activity) => {
+    if (error) {
+      console.error(error);
+    } else {
+      displayRecentActivity(activity);
     }
   });
 }

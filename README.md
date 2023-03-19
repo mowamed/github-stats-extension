@@ -11,6 +11,7 @@ A simple Chrome extension to display user stats and repositories from GitHub.
   - Followers
   - Following
   - Last Updated
+  - Recent activity
 - Fetch and display a list of user repositories (paginated)
 
 ## Installation
