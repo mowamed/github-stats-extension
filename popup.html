@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            width: 300px;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        #input-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GitHub Stats</h1>
+    <div id="input-container">
+        <input type="text" id="username-input" placeholder="GitHub Username">
+        <button id="submit-button">Submit</button>
+    </div>
+    <div id="stats-container" style="display: none;">
+        <p>Username: <span id="username"></span></p>
+        <p>Public Repos: <span id="public_repos"></span></p>
+        <p>Followers: <span id="followers"></span></p>
+        <p>Following: <span id="following"></span></p>
+        <p>Last Updated: <span id="last_updated"></span></p>
+    </div>
+    <script src="popup.js"></script>
+</body>
+
+</html>
