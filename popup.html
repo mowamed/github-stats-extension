@@ -2,40 +2,32 @@
 <html>
 
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.17/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            width: 300px;
-            padding: 10px;
-        }
-
-        h1 {
-            margin: 0;
-            font-size: 18px;
-        }
-
-        p {
-            margin: 0;
-        }
-
-        #input-container {
-            margin-bottom: 10px;
+            width: 320px;
+            padding: 16px;
         }
     </style>
 </head>
 
-<body>
-    <h1>GitHub Stats</h1>
-    <div id="input-container">
-        <input type="text" id="username-input" placeholder="GitHub Username">
-        <button id="submit-button">Submit</button>
-    </div>
-    <div id="stats-container" style="display: none;">
-        <p>Username: <span id="username"></span></p>
-        <p>Public Repos: <span id="public_repos"></span></p>
-        <p>Followers: <span id="followers"></span></p>
-        <p>Following: <span id="following"></span></p>
-        <p>Last Updated: <span id="last_updated"></span></p>
+<body class="bg-gray-100">
+    <div>
+        <h1 class="text-xl font-semibold mb-4">GitHub Stats</h1>
+        <div class="flex mb-4">
+            <input
+                class="flex-grow px-3 py-2 rounded-l-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none"
+                type="text" id="username-input" placeholder="GitHub Username">
+            <button class="px-3 py-2 text-white bg-indigo-500 rounded-r-lg hover:bg-indigo-600"
+                id="submit-button">Submit</button>
+        </div>
+        <div id="stats-container" style="display: none;">
+            <p class="mb-1"><strong>Username:</strong> <span id="username"></span></p>
+            <p class="mb-1"><strong>Public Repos:</strong> <span id="public_repos"></span></p>
+            <p class="mb-1"><strong>Followers:</strong> <span id="followers"></span></p>
+            <p class="mb-1"><strong>Following:</strong> <span id="following"></span></p>
+            <p class="mb-1"><strong>Last Updated:</strong> <span id="last_updated"></span></p>
+        </div>
     </div>
     <script src="popup.js"></script>
 </body>
