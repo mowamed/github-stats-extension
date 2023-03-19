@@ -18,15 +18,15 @@ To install the GitHub Stats Chrome extension, follow these steps:
 1. Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/github-stats-extension.git
+git clone https://github.com/mowamed/github-stats-extension.git
 cd github-stats-extension
 ```
 
 2. Open Chrome and navigate to chrome://extensions.
 
-3. Enable "Developer mode" by toggling the switch in the top right 4. corner.
+3. Enable "Developer mode" by toggling the switch in the top right corner.
 
-Click "Load unpacked" and select the github-stats-extension folder.
+4. Click "Load unpacked" and select the github-stats-extension folder.
 
 The extension should now be loaded in your Chrome browser, and you should see the GitHub Stats icon in your extensions bar.
 
